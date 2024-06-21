@@ -1,0 +1,21 @@
+.modalImage {
+  margin: 0 auto;
+  max-height: 80vh;
+  max-width: 100%;
+}
+
+p {
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fffae6;
+}
+
+.description {
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+}
