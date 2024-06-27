@@ -1,7 +1,10 @@
 import Modal from "react-modal";
-import css from "../ImageModal/ImageModal.module.css"
+import css from "../ImageModal/ImageModal.module.css";
+import { FC } from "react";
+import { ModalProps } from "./ImageModal.types";
 
-export default function ImageModal({ item, isOpen, onClose }) {
+
+export const ImageModal: FC<ModalProps> = ({ item, isOpen, onClose }) => {
   const { urls, user, likes, description, alt_description } = item;
 
   const customStyles = {
@@ -39,14 +42,14 @@ export default function ImageModal({ item, isOpen, onClose }) {
           className={css.modalImage}
           src={urls.regular}
           alt={alt_description}
-				/>
-				
-					<p className={css.description}>{description}</p>
-					<div className={css.info}>
-        <p>Author: {user.username}</p>
-					<p>👍 {likes}</p>
-					</div>
+        />
+
+        <p className={css.description}>{description}</p>
+        <div className={css.info}>
+          <p>Author: {user.username}</p>
+          <p>👍 {likes}</p>
+        </div>
       </Modal>
     </div>
   );
-}
+};

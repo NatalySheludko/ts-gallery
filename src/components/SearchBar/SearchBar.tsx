@@ -1,12 +1,13 @@
 import { Field, Formik, Form } from "formik";
 import css from "../SearchBar/SearchBar.module.css";
-import { useState } from "react";
+import { FC, useState } from "react";
 import toast from "react-hot-toast";
+import { SearchProps } from "./SearchBar.types";
 
-export default function SearchBar({ onSearch }) {
-  const [isActive, setIsActive] = useState(false);
+export const SearchBar: FC<SearchProps> = ({ onSearch }) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
 
-  const handleInputClick = () => {
+  const handleInputClick = (): void => {
     setIsActive(true);
   };
 
@@ -19,7 +20,8 @@ export default function SearchBar({ onSearch }) {
           initialValues={{ query: "" }}
           onSubmit={(values, actions) => {
             if (!values.query.trim()) {
-              return notify();
+              notify();
+              return;
             }
             onSearch(values.query);
             actions.resetForm();
@@ -46,4 +48,4 @@ export default function SearchBar({ onSearch }) {
       </header>
     </div>
   );
-}
+};

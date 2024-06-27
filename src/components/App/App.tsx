@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
-import ImageGallery from "../ImageGallery/ImageGallery";
+import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { getArticles } from "../Api/Api";
 import Loader from "../Loader/Loader";
-import SearchBar from "../SearchBar/SearchBar";
-import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { LoadMoreBtn } from "../LoadMoreBtn/LoadMoreBtn";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import ImageModal from "../ImageModal/ImageModal";
+import { ImageModal } from "../ImageModal/ImageModal";
+import { Articles } from "./App.types";
 
 export default function App() {
-  const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
-  const [totalPage, setTotalPage] = useState(0);
+  const [articles, setArticles] = useState<Articles[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Articles | null>(null);
+  const [totalPage, setTotalPage] = useState<number>(0);
 
   useEffect(() => {
     if (searchQuery.trim() === "") {
@@ -40,24 +41,24 @@ export default function App() {
     fetchArticles();
   }, [searchQuery, page]);
 
-  const handleSearch = async (item) => {
+  const handleSearch = async (item: string) => {
     setSearchQuery(item);
     setPage(1);
     setArticles([]);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(page + 1);
   };
 
-  function OpenModal(item) {
+  function OpenModal(item: Articles) {
     setSelectedImage(item);
     setModalIsOpen(true);
   }
 
-  function CloseModal() {
+  function CloseModal(): void {
     setModalIsOpen(false);
-    setSelectedImage();
+    setSelectedImage(null);
   }
 
   return (

@@ -1,6 +1,13 @@
 import css from "../ImageCard/ImageCard.module.css";
+import { FC } from "react";
+import { Articles } from "../App/App.types";
 
-export default function ImageCard({ item, onClick }) {
+interface ImageCardProps {
+  item: Articles;
+  onClick: (item: Articles) => void;
+}
+
+export const ImageCard: FC<ImageCardProps> = ({ item, onClick }) => {
   const { urls, alt_description } = item;
 
   const handlerClick = () => {
@@ -14,4 +21,4 @@ export default function ImageCard({ item, onClick }) {
       alt={alt_description}
     />
   );
-}
+};
