@@ -1,4 +1,6 @@
+import { Articles } from "../App/App.types";
+
 export interface ResProps {
   total_pages: number;
-  results: any[];
+  results: Articles[];
 }

@@ -28,10 +28,8 @@ export default function App() {
         setIsLoading(true);
         setIsError(false);
         const data = await getArticles(searchQuery, page, setTotalPage);
-        console.log(data);
-        if (data && Array.isArray(data)) {
-          setArticles((prevState) => [...prevState, ...data]);
-        }
+        console.log(data);      
+        setArticles((prevState) => [...prevState, ...data]);       
       } catch (error) {
         setIsError(true);
       } finally {
