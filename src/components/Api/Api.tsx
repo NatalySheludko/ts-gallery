@@ -1,14 +1,12 @@
 import axios from "axios";
 import { ResProps } from "./Api.types";
-import { Articles } from "../App/App.types";
 
 axios.defaults.baseURL = "https://api.unsplash.com";
 
 export const getArticles = async (
   item: string,
   currentPage: number,
-  setTotalPage: (totalPages: number) => void
-): Promise<Articles[]> => {
+): Promise<ResProps> => {
   const res = await axios.get<ResProps>("/search/photos", {
     params: {
       query: item,
@@ -18,6 +16,5 @@ export const getArticles = async (
     },
   });
 
-  setTotalPage(res.data.total_pages);
-  return res.data.results;
+  return res.data;
 };

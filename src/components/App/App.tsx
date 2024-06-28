@@ -27,9 +27,9 @@ export default function App() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const data = await getArticles(searchQuery, page, setTotalPage);
-        console.log(data);      
-        setArticles((prevState) => [...prevState, ...data]);       
+        const data = await getArticles(searchQuery, page);
+        setTotalPage(data.total_pages);
+        setArticles((prevState) => [...prevState, ...data.results]);
       } catch (error) {
         setIsError(true);
       } finally {
