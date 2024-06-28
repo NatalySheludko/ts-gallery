@@ -6,14 +6,14 @@ import { GalleryProps } from "./ImageGallery.types";
 
 export const ImageGallery: FC<GalleryProps> = ({ items, onClick }) => {
   return (
-    <ul className={css.menuList}>
+    <div className={css.menuList}>
       {items.map((item) => {
         return (
-          <li className={css.list} key={item.id}>
+          <div className={css.list} key={item.id}>
             <ImageCard item={item} onClick={onClick} />
-          </li>
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 };
