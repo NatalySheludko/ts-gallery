@@ -29,13 +29,13 @@ Users can click on an image to open a React Modal that displays the image in a l
 The modal also displays additional information, such as the image's author and description.
 
 ## Libraries Used
-React: A JavaScript library for building user interfaces.
-Vite: A fast build tool for modern web projects.
-Unsplash API: An API used to fetch images.
-Axios: A promise-based HTTP client for making API requests.
-React Hot Toast: A notification library for user feedback.
-React Modal: A library used to create accessible modal windows.
-React Loader Spinner: A spinner used as a loading indicator.
-CSS Modules: For scoped and modular CSS styling.
+- React: A JavaScript library for building user interfaces.
+- Vite: A fast build tool for modern web projects.
+- Unsplash API: An API used to fetch images.
+- Axios: A promise-based HTTP client for making API requests.
+- React Hot Toast: A notification library for user feedback.
+- React Modal: A library used to create accessible modal windows.
+- React Loader Spinner: A spinner used as a loading indicator.
+- CSS Modules: For scoped and modular CSS styling.
 
 
