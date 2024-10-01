@@ -1,5 +1,6 @@
 ## Image Search Application
 This project is an Image Search Application built using React+Vite and TypeScript. It allows users to search for images by keywords and view them in a dynamic gallery with pagination support. The app uses the Unsplash API to fetch images and display them in various resolutions.
+Adaptive design for desktop (1440px).
 
 ## Features
 **Search Functionality**:
