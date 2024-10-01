@@ -1,21 +1,17 @@
 import { Field, Formik, Form } from "formik";
-import css from "../SearchBar/SearchBar.module.css";
-import { FC, useState } from "react";
+import { FC } from "react";
 import toast from "react-hot-toast";
 import { SearchProps } from "./SearchBar.types";
+import { FaSearch } from "react-icons/fa";
+import css from "../SearchBar/SearchBar.module.css";
 
 export const SearchBar: FC<SearchProps> = ({ onSearch }) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
-  const handleInputClick = (): void => {
-    setIsActive(true);
-  };
-
   const notify = () => toast.error("Error loading !");
 
   return (
-    <div className={css.formWrap}>
-      <header>
+    <header className={css.header}>
+      <div className={css.formWrap}>
+        <h1 className={css.title}>Gallery: search for images with Ease</h1>
         <Formik
           initialValues={{ query: "" }}
           onSubmit={(values, actions) => {
@@ -25,27 +21,29 @@ export const SearchBar: FC<SearchProps> = ({ onSearch }) => {
             }
             onSearch(values.query);
             actions.resetForm();
-            setIsActive(false);
           }}
         >
           <Form>
-            <div className={`${css.search} ${isActive ? css.active : ""}`}>
+            <div className={css.search}>
               <Field
                 className={css.input}
                 type="text"
                 name="query"
                 autoComplete="off"
                 autoFocus
-                placeholder="Search images and photos"
-                onClick={handleInputClick}
+                placeholder="Search images..."
               />
-              <button type="submit" className={css.reset}>
-                <div className={css.handle}></div>
+              <button type="submit" className={css.searchButton}>
+                  <FaSearch className={css.handle} />
               </button>
             </div>
           </Form>
         </Formik>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };
+
+
+
+
